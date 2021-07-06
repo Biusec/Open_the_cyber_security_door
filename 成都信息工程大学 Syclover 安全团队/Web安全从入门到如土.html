@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Web安全入门指南 - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;padding:0 15px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}.ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}.markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}.ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}.markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}.ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-published-note{color:#337ab7}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" style="position: relative;"><h1 id="Web安全入门指南"><a class="anchor hidden-xs" href="#Web安全入门指南" title="Web安全入门指南"><span class="octicon octicon-link"></span></a>Web安全入门指南</h1><h2 id="基础知识"><a class="anchor hidden-xs" href="#基础知识" title="基础知识"><span class="octicon octicon-link"></span></a>基础知识</h2><p>我觉得学习Web安全至少得大概了解下关于Web的基础知识，比如Web服务器，前后端，HTTP协议等；linux的基础操作；了解一些常见的安全术语，如payload，exp，反弹shell等；还有必须学编程，否则很多漏洞不能理解，不会变通，只能成为脚本小子。另外在研究某个具体漏洞的时候也需要学习相关知识，比如研究SQL注入那肯定需要学习SQl语句以及后端语言对数据库的操作，研究XXE需要学习XML，等等。所以，当你发现某篇文章晦涩难懂的话那多半就是基础知识不够，这时建议凡是遇见不会的点就去搜资料，所有点都清楚之后再看问题就透彻很多。</p><p>可能你现在看到上面那一段话就已经云里雾里了😅，完全不明白那些名词是什么。当然我的意思不是必须学完这些所有基础才能进一步学习安全，很多时候都是在研究具体某个安全问题的时候才会临时去学习相关的知识。以下列一些应该学习的内容，当然不必在一开始就全部深入学习，可以大概了解，在以后遇到的时候在再一步深入</p><h3 id="HTML和JavaScript"><a class="anchor hidden-xs" href="#HTML和JavaScript" title="HTML和JavaScript"><span class="octicon octicon-link"></span></a>HTML和JavaScript</h3><p>入门不需要太深入学习，能看懂，会简单的代码编写就行（比如写个表单提交），Ajax要学下，css需要了解下<br>
+<a href="https://www.runoob.com/html/html-tutorial.html" target="_blank" rel="noopener">HTML教程</a><br>
+<a href="https://www.runoob.com/js/js-tutorial.html" target="_blank" rel="noopener">JavaScript教程</a><br>
+<a href="https://www.runoob.com/php/php-ajax-intro.html" target="_blank" rel="noopener">Ajax教程</a></p><h3 id="HTTP协议"><a class="anchor hidden-xs" href="#HTTP协议" title="HTTP协议"><span class="octicon octicon-link"></span></a>HTTP协议</h3><p>可以在网上搜下相关资料，了解下就行，得知道HTTP的构成和不同的请求方法，极力推荐一本书《图解HTTP》，有空可以看看，漫画风还是挺有意思的<br>
+<a href="https://www.runoob.com/http/http-tutorial.html" target="_blank" rel="noopener">HTTP协议</a></p><h3 id="MySQL"><a class="anchor hidden-xs" href="#MySQL" title="MySQL"><span class="octicon octicon-link"></span></a>MySQL</h3><p>要理解SQL注入是必须要学SQL语句和某一门后端语言的，其实本质就是数据变成了指令。<br>
+<a href="https://www.runoob.com/sql/sql-syntax.html" target="_blank" rel="noopener">SQL语句</a><br>
+<a href="https://www.runoob.com/mysql/mysql-tutorial.html" target="_blank" rel="noopener">MySQL教程</a><br>
+（会用SQL增删改查就行，高级用法以后在具体题目中慢慢学吧）</p><h3 id="PHP"><a class="anchor hidden-xs" href="#PHP" title="PHP"><span class="octicon octicon-link"></span></a>PHP</h3><p>为什么编程语言要把PHP单独提出来，因为PHP是挺方便的，而且简单，也有很多安全问题值得研究，刚开始大概学学便是，基础语法能看懂，能写简单代码，前后端的交互（get，post，cookie，header）,数据库的操作<br>
+<a href="https://www.runoob.com/php/php-tutorial.html" target="_blank" rel="noopener">PHP教程</a><br>
+教程中的环境搭建有点麻烦，建议安装PHPstudy(web服务器，mysql都集成了)，具体用法可以网上搜搜<br>
+<a href="http://phpstudy.php.cn/download.html" target="_blank" rel="noopener">PHPstudey</a></p><h3 id="Linux基础"><a class="anchor hidden-xs" href="#Linux基础" title="Linux基础"><span class="octicon octicon-link"></span></a>Linux基础</h3><p>由于此指南是针对入门Web安全的同学，Linux一开始也不建议用太多时间，能够Linux的日常操作就行，可以去图书馆借本linux的书（越薄越好 😂），最好是自己买台Linux服务器，我比较习惯ubuntu系统（阿里云学生机10元/月感觉不错）。然后自己装个apache，php，mysql，搭建个小网站（别用宝塔一类的自动部署，尽量自己动手）<br>
+（参考链接我是随便在网上搜的，要是觉得讲的不够详细就自己再搜搜，不必严格按照该文章做，主要目的就是熟悉linux，会搭建web服务器）<br>
+<a href="https://blog.csdn.net/weixin_39212776/article/details/81192847" target="_blank" rel="noopener">Ubuntu 18.04下使用Apache搭建一个web服务器</a></p><p>好了基础就少写点，我怕太多吓走新人 😶</p><h2 id="Web安全漏洞"><a class="anchor hidden-xs" href="#Web安全漏洞" title="Web安全漏洞"><span class="octicon octicon-link"></span></a>Web安全漏洞</h2><p>其实一开始学习Web安全就是在学习各种漏洞，调试各种漏洞<br>
+下面给的各种漏洞我没办法完完整整提供所有学习资料，得靠各位自己网上搜索了，其实搜索能力也是学安全的必备技能，有些参考链接我也是临时搜的，不能完全保证质量，各位自己甄别了<br>
+另外，勤动手，每个paylaod必须亲自调试！！！ 😕/认真脸/<br>
+自己测试的时候要懂变通，比如某个地方改下测试还能不能执行，要有发散思维，切莫跟着教程学死技巧，学的不仅是技巧本身，还有思考问题的思维，举个例子，网上常见的后台万能密码<code>' or '1'='1</code> 为什么在某情况下可以是万能密码，原理是什么？可以换成什么形式？<code>' or 1='1</code> 可以吗？<code>' or '1</code> 可以吗？</p><h3 id="SQL注入"><a class="anchor hidden-xs" href="#SQL注入" title="SQL注入"><span class="octicon octicon-link"></span></a>SQL注入</h3><ul>
+<li>
+<p>这个怕是在Web安全里提到最多的了<br>
+sql-labs前几题走完整流程，先查information_schema数据库找表名列名,接着查具体数据。后面关卡能绕过防御证明SQL注入存在即可，做够前二三十关就行，然后去综合靶场学骚操作</p>
+</li>
+<li>
+<p>推荐靶场<br>
+sql-labs和下方我推荐的靶场中自己找题</p>
+</li>
+<li>
+<p>一些资料<br>
+<a href="https://www.cnblogs.com/peterpan0707007/p/7501575.html" target="_blank" rel="noopener">sql—labs搭建</a><br>
+<a href="https://www.anquanke.com/post/id/170626?from=timeline" target="_blank" rel="noopener">一篇文章带你深入理解 SQL 盲注</a><br>
+绕waf等等技巧可以以后进阶再学，目前入门重点是理解漏洞本身</p>
+</li>
+</ul><p>（如果新人在学习到这里并且是认认真真跟着做时，想必会发现要学SQL注入得先搭环境，需要安装PHPstudy，然后得配置数据库，才可以将靶场跑起来，然后你得会PHP,这样才能看懂代码，才能发掘漏洞，然后得会SQL语句，这样才能利用漏洞，有时候是盲注，手动不大现实，需要自己写脚本，那么python就是不二之选。然后就根据这条链一步步学习便是，后面所有漏洞学习都同理，就不再重复了）</p><h3 id="命令执行代码执行"><a class="anchor hidden-xs" href="#命令执行代码执行" title="命令执行代码执行"><span class="octicon octicon-link"></span></a>命令执行/代码执行</h3><ul>
+<li>
+<p>其实这个本质也是把数据作为了指令，学习这个漏洞无非就是学习Linux的命令，一些特性，代码的书写，绕过等。代码执行就先学PHP相关的吧</p>
+</li>
+<li>
+<p>推荐靶场<br>
+DVWA中命令执行部分和下方我推荐的靶场中自己找题，windows上和linux上很多东西是不同的，建议分别在linux和windows搭建环境测试，除了找方法绕过靶场本身的防御外，自己要网上收集绕过方法，测试是否可行</p>
+</li>
+<li>
+<p>一些资料<br>
+《代码审计》-代码执行和命令执行部分总结的<br>
+<a href="https://www.0dayhack.com/post-834.html" target="_blank" rel="noopener">Web渗透测试中命令执行漏洞详解</a><br>
+<a href="https://www.cnblogs.com/drkang/p/8688481.html" target="_blank" rel="noopener">命令执行、代码执行漏洞</a><br>
+<a href="https://www.cnblogs.com/leixiao-/p/10612798.html" target="_blank" rel="noopener">LD_PRELOAD &amp; putenv() 绕过 disable_functions &amp; open_basedir</a></p>
+</li>
+</ul><h3 id="XSS"><a class="anchor hidden-xs" href="#XSS" title="XSS"><span class="octicon octicon-link"></span></a>XSS</h3><ul>
+<li>
+<p>学这个得先会javascrip，了解下同源策略，CSP（Content Security Policy），然后还是看书吧《xss跨站脚本 攻击剖析与防御》，其中flash XSS部分过时了不必看，还有其中很多paylaod不一定可用，一定要自己测试。<br>
+还有XSS的实际利用，比如怎么盗cookie，这个过程要很清楚且能自己编写paylaod，自己动手，至少完成一次完整攻击（可以拿室友实验😃，别网上随便找个网站就日，违法犯罪的事可不是我教唆的😂）</p>
+</li>
+<li>
+<p>推荐靶场<br>
+下方我推荐的靶场</p>
+</li>
+<li>
+<p>一些资料<br>
+<a href="https://xz.aliyun.com/t/5084" target="_blank" rel="noopener">我的CSP绕过思路及总结</a><br>
+<a href="http://blog.nsfocus.net/xss-advance/" target="_blank" rel="noopener">【干货分享】XSS攻击进阶篇——那些年我们看不懂的XSS</a></p>
+</li>
+</ul><h3 id="文件上传"><a class="anchor hidden-xs" href="#文件上传" title="文件上传"><span class="octicon octicon-link"></span></a>文件上传</h3><ul>
+<li>
+<p>一开始还是主要学PHP的文件上传漏洞，把upload-labs这个靶场做完，建议是先黑盒测试，做不出来再白盒审代码，再做不出来才看WP。得注意下出现各种安全问题的前提条件哦，面试肯定要被问到😏<br>
+还有记不清这靶场有没考过分布式配置文件，自己去了解下.htaccess和.user.ini<br>
+很多时候，只有文件上传功能，但并不能绕过上传webshell，所以还要配合文件包含漏洞，这点留给你们先思考下</p>
+</li>
+<li>
+<p>推荐靶场<br>
+<a href="https://github.com/c0ny1/upload-labs" target="_blank" rel="noopener">upload-labs</a><br>
+（接触到github了，不知道这个的同学就可以去了解下什么是github，然后学习下git）</p>
+</li>
+<li>
+<p>一些资料<br>
+<a href="https://xz.aliyun.com/t/2435" target="_blank" rel="noopener">Upload-labs通关手册</a></p>
+</li>
+</ul><h3 id="文件包含"><a class="anchor hidden-xs" href="#文件包含" title="文件包含"><span class="octicon octicon-link"></span></a>文件包含</h3><ul>
+<li>
+<p>也是先学PHP相关的（所以我在基础知识里提到要学PHP，如果这个漏洞看不懂的话再去好好学学PHP吧）</p>
+</li>
+<li>
+<p>推荐靶场：<br>
+DVWA好像有来着，还有下方我推荐的靶场找题</p>
+</li>
+<li>
+<p>一些资料：<br>
+<a href="https://chybeta.github.io/2017/10/08/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" target="_blank" rel="noopener">php文件包含漏洞</a></p>
+</li>
+</ul><h3 id="CSRF"><a class="anchor hidden-xs" href="#CSRF" title="CSRF"><span class="octicon octicon-link"></span></a>CSRF</h3><ul>
+<li>
+<p>现在在框架里也就开启一项配置就可以解决该问题，但是原理思路还是有必要学习的，还得知道CSRF与XSS的关系和区别</p>
+</li>
+<li>
+<p>推荐靶场<br>
+这个不需要靶场吧，就自己搭环境测试，可以学学工具了，burpsuite（有自动生成CSRF功能，当然还有其他很多功能，这个工具最是常用，一定要学）</p>
+</li>
+<li>
+<p>一些资料<br>
+<a href="https://www.freebuf.com/column/155800.html" target="_blank" rel="noopener">Web安全 — CSRF漏洞</a></p>
+</li>
+</ul><h3 id="XXE"><a class="anchor hidden-xs" href="#XXE" title="XXE"><span class="octicon octicon-link"></span></a>XXE</h3><ul>
+<li>
+<p>这个漏洞多数情况下是可以任意读文件，然后还可造成SSRF，特殊情况下也可执行任意命令，需要先学习下XML，这个建议先在WebGoat靶场（java环境）练习，然后自己动手搭建PHP版本的漏洞环境进行测试，在各种不同配置下测试</p>
+</li>
+<li>
+<p>推荐靶场<br>
+WebGoat XXE部分，自己动手写代码搭建PHP下测试环境</p>
+</li>
+<li>
+<p>一些资料<br>
+<a href="https://www.k0rz3n.com/2018/11/19/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20XXE%20%E6%BC%8F%E6%B4%9E/" target="_blank" rel="noopener">一篇文章带你理解漏洞之 XXE 漏洞</a><br>
+<a href="https://thief.one/2017/06/20/1/" target="_blank" rel="noopener">浅谈XXE漏洞攻击与防御</a><br>
+<a href="https://www.cnblogs.com/iamstudy/articles/2th_qiangwangbei_ctf_writeup.html" target="_blank" rel="noopener">第二届强网杯Web Writeup</a> 教育机构那道题</p>
+</li>
+</ul><h3 id="SSRF"><a class="anchor hidden-xs" href="#SSRF" title="SSRF"><span class="octicon octicon-link"></span></a>SSRF</h3><ul>
+<li>
+<p>服务端请求伪造，攻击是发生在后端服务器，注意区分CSRF，要了解gopher协议</p>
+</li>
+<li>
+<p>推荐靶场<br>
+在下方推荐的CTF综合靶场中找找吧,我也记不清哪有了😑<br>
+<a href="https://vulhub.org/#/environments/weblogic/ssrf/" target="_blank" rel="noopener">Vulhub_Weblogic SSRF漏洞</a></p>
+</li>
+<li>
+<p>一些资料<br>
+猪猪侠 2016 年wooyun 大会议题（自己在网上搜搜吧）<br>
+<a href="https://uknowsec.cn/posts/notes/SSRF%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%88%A9%E7%94%A8%E4%B8%8E%E5%AD%A6%E4%B9%A0.html" target="_blank" rel="noopener">SSRF漏洞的利用与学习</a><br>
+<a href="https://www.anquanke.com/post/id/86527" target="_blank" rel="noopener">【Blackhat】SSRF的新纪元：在编程语言中利用URL解析器</a><br>
+<a href="https://www.freebuf.com/articles/web/159342.html" target="_blank" rel="noopener">从一道CTF题目看Gopher攻击MySql</a></p>
+</li>
+</ul><h3 id="反序列化"><a class="anchor hidden-xs" href="#反序列化" title="反序列化"><span class="octicon octicon-link"></span></a>反序列化</h3><ul>
+<li>
+<p>每种语言的反序列机制都不同，造成的问题和paylaod构造方式也差异很大，一开还是建议学习PHP反序列化，后面可以学习Python以及Java反序列化安全问题。<br>
+对于PHP反序列化，重点是掌握pop链的构造</p>
+</li>
+<li>
+<p>推荐靶场<br>
+emmm，下面靶场自己找题</p>
+</li>
+<li>
+<p>一些资料<br>
+<a href="https://www.k0rz3n.com/2018/11/19/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" target="_blank" rel="noopener">一篇文章带你深入理解漏洞之 PHP 反序列化漏洞</a><br>
+<a href="https://chybeta.github.io/2017/06/17/%E6%B5%85%E8%B0%88php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" target="_blank" rel="noopener">浅谈php反序列化漏洞</a><br>
+<a href="https://www.anquanke.com/post/id/86452" target="_blank" rel="noopener">PHP反序列化漏洞</a><br>
+<a href="https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC%8F%E6%B4%9E%E4%B9%8BPython%20%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" target="_blank" rel="noopener">一篇文章带你理解漏洞之 Python 反序列化漏洞</a></p>
+</li>
+</ul><h3 id="变量覆盖"><a class="anchor hidden-xs" href="#变量覆盖" title="变量覆盖"><span class="octicon octicon-link"></span></a>变量覆盖</h3><ul>
+<li>
+<p>对于PHP来说，变量覆盖也就是一些函数用法不当造成的问题，先理解漏洞，然后最好自己写代码搭建靶场并测试</p>
+</li>
+<li>
+<p>推荐靶场<br>
+记得bugku中有道白盒审计就是变量覆盖来着<br>
+自己写代码搭建测试</p>
+</li>
+<li>
+<p>一些资料<br>
+<a href="https://www.freebuf.com/column/150731.html" target="_blank" rel="noopener">代码审计|变量覆盖漏洞</a><br>
+《代码审计》-变量覆盖部分总结</p>
+</li>
+</ul><h3 id="SSTI"><a class="anchor hidden-xs" href="#SSTI" title="SSTI"><span class="octicon octicon-link"></span></a>SSTI</h3><ul>
+<li>
+<p>服务端模板注入</p>
+</li>
+<li>
+<p>推荐靶场<br>
+下面找找吧</p>
+</li>
+<li>
+<p>一些资料<br>
+<a href="https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC%8F%E6%B4%9E%E4%B9%8BSSTI%E6%BC%8F%E6%B4%9E/" target="_blank" rel="noopener">一篇文章带你理解漏洞之 SSTI 漏洞</a></p>
+</li>
+</ul><h3 id="其他"><a class="anchor hidden-xs" href="#其他" title="其他"><span class="octicon octicon-link"></span></a>其他</h3><p>Web安全方面的漏洞当然不止这些，不过目前就入门来说掌握这些应该差不多了，其他的就希望你们在看文章或是做题中遇见并且学习</p><h2 id="推荐的书籍"><a class="anchor hidden-xs" href="#推荐的书籍" title="推荐的书籍"><span class="octicon octicon-link"></span></a>推荐的书籍</h2><p>学习的时候，书也是不可少的，往往书中才有比较系统的知识。有些看不懂的话也很正常，配合网上搜索资料，慢慢消化，多动手！切莫只看不动，以为自己理解了，其实动手实践才能真正学到东西</p><ul>
+<li>《图解HTTP》</li>
+<li>《Web前端黑客技术与揭秘》</li>
+<li>《白帽子讲Web安全》</li>
+<li>《SQL注入攻击与防御》</li>
+<li>《黑客攻防技术宝典-Web实战篇》</li>
+<li>《代码审计:企业级Web代码安全架构》</li>
+</ul><h2 id="推荐的靶场"><a class="anchor hidden-xs" href="#推荐的靶场" title="推荐的靶场"><span class="octicon octicon-link"></span></a>推荐的靶场</h2><p>其实我觉得我学习进度最快的时候就是在靶场边刷题边学习的时候，一开始可能无从下手，就可以看看别人写的wp(write up，题解，比如直接搜bugku WP)，跟着wp作者的解题方法学习，然后自己思考，测试自己的想法。在学了某个漏洞原理之后也最好去找相应靶场，相应题目，练习巩固</p><h3 id="综合在线CTF靶场"><a class="anchor hidden-xs" href="#综合在线CTF靶场" title="综合在线CTF靶场"><span class="octicon octicon-link"></span></a>综合在线CTF靶场</h3><ul>
+<li><a href="https://ctf.bugku.com/" target="_blank" rel="noopener">bugku</a></li>
+<li>JarvisOJ</li>
+<li>实验吧</li>
+<li><a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">攻防世界</a></li>
+</ul><h3 id="在线XSS靶场"><a class="anchor hidden-xs" href="#在线XSS靶场" title="在线XSS靶场"><span class="octicon octicon-link"></span></a>在线XSS靶场</h3><ul>
+<li><a href="https://alf.nu/alert1" target="_blank" rel="noopener">alert(1) to win</a></li>
+<li><a href="http://prompt.ml" target="_blank" rel="noopener">prompt(1) to win</a></li>
+</ul><h3 id="综合本地靶场"><a class="anchor hidden-xs" href="#综合本地靶场" title="综合本地靶场"><span class="octicon octicon-link"></span></a>综合本地靶场</h3><ul>
+<li>WebGoat</li>
+<li>DVWA</li>
+<li>bwapp</li>
+<li><a href="https://vulhub.org/#/environments/" target="_blank" rel="noopener">Vulhub</a></li>
+</ul><h2 id="需要学习的工具"><a class="anchor hidden-xs" href="#需要学习的工具" title="需要学习的工具"><span class="octicon octicon-link"></span></a>需要学习的工具</h2><p>我就只列几个Web安全中常用的工具吧</p><ul>
+<li>burpsuit<br>
+可以说这个是最最常用的工具，可以在网上找个破解版，前提是安装java环境，这个就网上搜教程吧。主要是学习Proxy，Decoder，Reperter，Intruder这四个模块的功能</li>
+<li>SQlmap<br>
+学习基本的命令，temper的使用，实战中估计用的多，但我经常是比赛，都得自己写脚本，平常这工具就用的较少。<br>
+工具虽然方便，但一定要掌握手工注入的技巧以及脚本编写的能力</li>
+<li>hackbar<br>
+有些版本不能用，就试着换其他版本就行，其实也就是方便发包调试</li>
+<li>dirsearch<br>
+目录扫描工具</li>
+</ul><h2 id="写在后面"><a class="anchor hidden-xs" href="#写在后面" title="写在后面"><span class="octicon octicon-link"></span></a>写在后面</h2><p>终于快写完了，写了几个小时还是挺累的😑<br>
+学弟学妹们有什么问题也可以直接来问我，Q1729888211</p><h3 id="一些提问"><a class="anchor hidden-xs" href="#一些提问" title="一些提问"><span class="octicon octicon-link"></span></a>一些提问</h3><p>统一写几个你们可能有的疑问</p><ul>
+<li>
+<p>我需要严格按照上面的顺序学习吗？<br>
+不用，以上只是入门所需知识的大纲，我想到啥就写了，没啥特定顺序，按照自己的学习计划安排就是，最好在1到3个月扎实掌握以上基础知识</p>
+</li>
+<li>
+<p>学完以上这些我就可以成为厉害的大黑阔吗？<br>
+怕是不行，毕竟我自己都还很菜，安全领域涉及的东西很多很多，不过学完以上也算黑客入门了吧，简单渗透几个网站，打打CTF还是没问题。</p>
+</li>
+<li>
+<p>有些文章看不懂怎么办？<br>
+如果在文章中遇见不会的名词，建议暂停当前文章的阅读，先去把不懂的地方弄懂，如果硬着头皮读下去，遇见不会就跳过的话，读完最后就会发现自己确实什么都没弄懂。如果有些确实读不懂，那说明水平确实还不够，暂时放一边吧，切莫好高骛远，从基础一步步走好。</p>
+</li>
+<li>
+<p>感觉学了很久技术不见进步怎么办？<br>
+你得努力学，如果每天只是看几十分钟文章，做几十分钟题，然后其他时间就打游戏刷剧去了，我觉得这样你看的见进步才怪了。当然在掌握正确学习方法条件下也可能出现学了很久，技术没有明显进步，所谓量变产生质变。继续加油吧少年。</p>
+</li>
+</ul><h3 id="一些建议"><a class="anchor hidden-xs" href="#一些建议" title="一些建议"><span class="octicon octicon-link"></span></a>一些建议</h3><ul>
+<li>
+<p>有舍有得<br>
+既然选择了成为一名正义的白帽子，那么有些东西是得舍去的，比如每天要少打游戏，少玩手机，少看剧，花大量时间在学习技术上，选择这条路请坚持走下去，不忘，方得。</p>
+</li>
+<li>
+<p>纸上得终浅，欲知需躬行<br>
+不能光看，一定要动手，一定要动手！！！</p>
+</li>
+<li>
+<p>勤做笔记，利于巩固知识和以后查阅，还有就是自己多总结</p>
+</li>
+<li>
+<p>实在遇见不懂的问题而百度谷歌又查不到的时候就多问，学长学姐其实都比较乐意回答问题的，不过要注意下提问的技巧，比如一个问题你是哪里不理解，做过何种尝试，结果怎么样</p>
+</li>
+</ul><hr><div style="text-align: right"> 淚笑@SYClover </div></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc expand"><ul class="nav">
+<li class=""><a href="#Web安全入门指南" title="Web安全入门指南">Web安全入门指南</a><ul class="nav">
+<li><a href="#基础知识" title="基础知识">基础知识</a><ul class="nav">
+<li><a href="#HTML和JavaScript" title="HTML和JavaScript">HTML和JavaScript</a></li>
+<li><a href="#HTTP协议" title="HTTP协议">HTTP协议</a></li>
+<li><a href="#MySQL" title="MySQL">MySQL</a></li>
+<li><a href="#PHP" title="PHP">PHP</a></li>
+<li><a href="#Linux基础" title="Linux基础">Linux基础</a></li>
+</ul>
+</li>
+<li class=""><a href="#Web安全漏洞" title="Web安全漏洞">Web安全漏洞</a><ul class="nav">
+<li><a href="#SQL注入" title="SQL注入">SQL注入</a></li>
+<li><a href="#命令执行代码执行" title="命令执行/代码执行">命令执行/代码执行</a></li>
+<li><a href="#XSS" title="XSS">XSS</a></li>
+<li><a href="#文件上传" title="文件上传">文件上传</a></li>
+<li><a href="#文件包含" title="文件包含">文件包含</a></li>
+<li><a href="#CSRF" title="CSRF">CSRF</a></li>
+<li class=""><a href="#XXE" title="XXE">XXE</a></li>
+<li><a href="#SSRF" title="SSRF">SSRF</a></li>
+<li><a href="#反序列化" title="反序列化">反序列化</a></li>
+<li><a href="#变量覆盖" title="变量覆盖">变量覆盖</a></li>
+<li><a href="#SSTI" title="SSTI">SSTI</a></li>
+<li><a href="#其他" title="其他">其他</a></li>
+</ul>
+</li>
+<li><a href="#推荐的书籍" title="推荐的书籍">推荐的书籍</a></li>
+<li><a href="#推荐的靶场" title="推荐的靶场">推荐的靶场</a><ul class="nav">
+<li><a href="#综合在线CTF靶场" title="综合在线CTF靶场">综合在线CTF靶场</a></li>
+<li><a href="#在线XSS靶场" title="在线XSS靶场">在线XSS靶场</a></li>
+<li><a href="#综合本地靶场" title="综合本地靶场">综合本地靶场</a></li>
+</ul>
+</li>
+<li><a href="#需要学习的工具" title="需要学习的工具">需要学习的工具</a></li>
+<li><a href="#写在后面" title="写在后面">写在后面</a><ul class="nav">
+<li><a href="#一些提问" title="一些提问">一些提问</a></li>
+<li><a href="#一些建议" title="一些建议">一些建议</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部收起</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
+        <div class="toc expand"><ul class="nav">
+<li class=""><a href="#Web安全入门指南" title="Web安全入门指南">Web安全入门指南</a><ul class="nav">
+<li class=""><a href="#基础知识" title="基础知识">基础知识</a><ul class="nav">
+<li class=""><a href="#HTML和JavaScript" title="HTML和JavaScript">HTML和JavaScript</a></li>
+<li class=""><a href="#HTTP协议" title="HTTP协议">HTTP协议</a></li>
+<li class=""><a href="#MySQL" title="MySQL">MySQL</a></li>
+<li class=""><a href="#PHP" title="PHP">PHP</a></li>
+<li class=""><a href="#Linux基础" title="Linux基础">Linux基础</a></li>
+</ul>
+</li>
+<li class=""><a href="#Web安全漏洞" title="Web安全漏洞">Web安全漏洞</a><ul class="nav">
+<li class=""><a href="#SQL注入" title="SQL注入">SQL注入</a></li>
+<li class=""><a href="#命令执行代码执行" title="命令执行/代码执行">命令执行/代码执行</a></li>
+<li class=""><a href="#XSS" title="XSS">XSS</a></li>
+<li class=""><a href="#文件上传" title="文件上传">文件上传</a></li>
+<li><a href="#文件包含" title="文件包含">文件包含</a></li>
+<li class=""><a href="#CSRF" title="CSRF">CSRF</a></li>
+<li class=""><a href="#XXE" title="XXE">XXE</a></li>
+<li class=""><a href="#SSRF" title="SSRF">SSRF</a></li>
+<li class=""><a href="#反序列化" title="反序列化">反序列化</a></li>
+<li class=""><a href="#变量覆盖" title="变量覆盖">变量覆盖</a></li>
+<li class=""><a href="#SSTI" title="SSTI">SSTI</a></li>
+<li class=""><a href="#其他" title="其他">其他</a></li>
+</ul>
+</li>
+<li class=""><a href="#推荐的书籍" title="推荐的书籍">推荐的书籍</a></li>
+<li class=""><a href="#推荐的靶场" title="推荐的靶场">推荐的靶场</a><ul class="nav">
+<li class=""><a href="#综合在线CTF靶场" title="综合在线CTF靶场">综合在线CTF靶场</a></li>
+<li class=""><a href="#在线XSS靶场" title="在线XSS靶场">在线XSS靶场</a></li>
+<li class=""><a href="#综合本地靶场" title="综合本地靶场">综合本地靶场</a></li>
+</ul>
+</li>
+<li class=""><a href="#需要学习的工具" title="需要学习的工具">需要学习的工具</a></li>
+<li class=""><a href="#写在后面" title="写在后面">写在后面</a><ul class="nav">
+<li class=""><a href="#一些提问" title="一些提问">一些提问</a></li>
+<li><a href="#一些建议" title="一些建议">一些建议</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部收起</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
