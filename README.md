@@ -18,7 +18,7 @@ PS：本仓库中的学习指南部分是由实验室学长学姐们进行总结
   推荐理由：几分钟一道关卡，快速入门。
 
 2. 进阶相关资料推荐:    
-  https://blog.csdn.net/zy15667076526/article/details/109705286?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-0&spm=1001.2101.3001.4242
+  https://blog.csdn.net/zy15667076526/article/details/109705286?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-0&spm=1001.2101.3001.4242    
 
   推荐理由：包含全部级别，内容相对齐全。适合进阶
 
