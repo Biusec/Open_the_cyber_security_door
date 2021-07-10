@@ -3,30 +3,56 @@
 
 PS：本仓库中的学习指南部分是由实验室学长学姐们进行总结上传，部分是通过互联网进行收集，意在帮助网络安全初学者找到打开网络安全之门的钥匙
 
-## 基础一（入门篇）
-
-### DVWA靶场训练
-
-简介
-
-> DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的PHP/MySQL Web应用，旨在为安全专业人员测试自己的专业技能和工具提供合法的环境，帮助web开发者更好的理解web应用安全防范的过程
 
 
-1. 入门相关资料推荐：   
-   https://www.bilibili.com/video/BV1g4411y7dT    
-	推荐理由：几分钟一道关卡，快速入门。
+### 目录结构
 
-2. 进阶相关资料推荐:    
-   https://blog.csdn.net/zy15667076526/article/details/109705286?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-0&spm=1001.2101.3001.4242    
-	推荐理由：包含全部级别，内容相对齐全。适合进阶
+```python
+Open_the_cyber_security_door
+│  LICENSE
+│  README.md
+│  提问的艺术：如何让别人喜欢回答你的提问.pdf
+│
+├─BiuTeam
+│      README.md
+│
+├─思维导图
+├─成都信息工程大学 Syclover 安全团队
+│      Android入门.pdf
+│      muhe_逆向入门.pdf
+│      Ox9A82_逆向入门.pdf
+│      syc-iot.pdf
+│      Syclover密码学入门.pdf
+│      web安全.md
+│      Web安全从入门到如土.html
+│      web安全入门@涙笑.pdf
+│      逆向入门@0xPoker.pdf
+│
+├─收集的白帽子个人感悟与总结
+│      三年.md
+│      答案与没有答案的旅行.md
+│
+└─猪猪侠_ringzero_我的⽩帽学习路线
+        我的白帽学习路线--20170325.pdf
+```
 
-  
 
-### CTF进阶训练
 
-熟练burpsuite    
-熟练seay代码审计    
-熟练php反序列化    
-熟练sql多种注入绕过    
-...    
+### 如何贡献
+
+🍺如果有补充或者纠错欢迎提交！[提一个 Issue](https://github.com/Biusec/Open_the_cyber_security_door/issues/new) 或者提交一个 `Pull Request`
+
+### 致谢
+
++ https://github.com/MiYogurt/network-security-mind-map
++ https://github.com/findneo/Newbie-Security-List
++ 
+
+包括但不限于以上的链接，因为查找了很多资料，感谢互联网让知识的获取变的便捷，以及希望后来者能够站在前人的肩膀上探索世界
+
+### END
+
+> ***做技术的黑客心态加上开放共进的态度是成长和越过高山幽谷的秘籍😊***
+
+
 
