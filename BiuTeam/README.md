@@ -6,9 +6,19 @@
 
 ## Step1
 
-+ 修改`hosts`文件访问`github`或科学上网，来到该`rep`，浏览相关资料
-+ 查看xxx，选择自己感兴趣的方向`WEB` or `二进制`
 + 了解学习`markdown`语法，后续使用`Typora`记录学习笔记
+  + markdown学习
+    + https://www.runoob.com/markdown/md-tutorial.html
+  + Typora
+    + https://www.typora.io/
+    + https://sspai.com/post/54912/
++ 修改`hosts`文件访问`github`或科学上网，来到该`rep`，浏览相关资料
+  + 修改`hosts`文件可参考
+    + `https://www.bilibili.com/read/cv10450104`
+  + 科学上网可参考或搜索
+    + V2ray
+    + https://www.bilibili.com/read/cv10393214/
++ 查看xxx，选择自己感兴趣的方向`WEB` or `二进制`
 
 > 以下是两个方向分别进行的任务
 
