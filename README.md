@@ -11,12 +11,28 @@ PS：本仓库中的学习指南部分是由实验室学长学姐们进行总结
 Open_the_cyber_security_door
 │  LICENSE
 │  README.md
+│  安全方法论.md
 │  提问的艺术：如何让别人喜欢回答你的提问.pdf
+│  网络安全相关链接.md
 │
 ├─BiuTeam
 │      README.md
+│      网络安全中的Web安全与二进制安全.md
 │
 ├─思维导图
+│  └─network-security-mind-map
+│          1.网络安全绪论.pdf
+│          10. 计算机病毒.pdf
+│          11. 网络安全发展与未来.pdf
+│          2.扫描与防御技术.pdf
+│          3.网络监听及防御技术.pdf
+│          4.口令破解与防御技术.pdf
+│          5.欺骗攻击及防御技术.pdf
+│          6. 拒绝服务攻击与防御技术.pdf
+│          7. 缓冲区溢出攻击及防御技术.pdf
+│          8. Web攻击及防御技术.pdf
+│          9. 木马攻击与防御技术.pdf
+│
 ├─成都信息工程大学 Syclover 安全团队
 │      Android入门.pdf
 │      muhe_逆向入门.pdf

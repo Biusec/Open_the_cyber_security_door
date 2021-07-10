@@ -12,13 +12,20 @@
   + Typora
     + https://www.typora.io/
     + https://sspai.com/post/54912/
-+ 修改`hosts`文件访问`github`或科学上网，来到该`rep`，浏览相关资料
++ 修改`hosts`文件访问`github`或科学上网，来到该[rep](https://github.com/Biusec/Open_the_cyber_security_door)，浏览仓库相关资料
+  + 浏览相关资料
+    + 学习`github`介绍与简单使用（B站）
   + 修改`hosts`文件可参考
     + `https://www.bilibili.com/read/cv10450104`
   + 科学上网可参考或搜索
     + V2ray
     + https://www.bilibili.com/read/cv10393214/
-+ 查看xxx，选择自己感兴趣的方向`WEB` or `二进制`
++ 查看[网络安全中的Web安全与二进制安全](https://github.com/Biusec/Open_the_cyber_security_door/blob/main/BiuTeam/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%AD%E7%9A%84Web%E5%AE%89%E5%85%A8%E4%B8%8E%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8.md)或自行了解`Web安全`和`二进制安全`，选择自己感兴趣的方向`WEB` or `二进制`
+  + 自行了解渠道
+    + 搜索引擎
+    + [ctf-wiki](https://ctf-wiki.org/)
+    + [知乎](http://zhihu.com/)
+    + 等等（搜索能力也是学安全的必备技能）
 
 > 以下是两个方向分别进行的任务
 
