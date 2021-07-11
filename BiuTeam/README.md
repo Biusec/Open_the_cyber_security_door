@@ -31,14 +31,33 @@
 
 + Web安全学习
   + 了解并安装`burpsuite`，成功测试抓包
+  
+    + 关于`burpsuite`
+      + [Burp Suite 实战指南](https://t0data.gitbooks.io/burpsuite/content/)
+      + 等等
+  
   + 本地搭建`DVWA`靶场
+  
+    + 关于`DVWA`
+  
+      + 简介
+  
+        > DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的PHP/MySQL Web应用，旨在为安全专业人员测试自己的专业技能和工具提供合法的环境，帮助web开发者更好的理解web应用安全防范的过程
+  
+      + 参考资料
+  
+        + https://www.bilibili.com/video/BV1g4411y7dT   
+        + https://blog.csdn.net/zy15667076526/article/details/109705286
+        + 等等
+  
   + 简单了解`OWASP TOP10`
 + 二进制安全学习
+  
   + 考虑到想要从Web安全入门的同学会比较多，所以这里先给出Web安全方向的下一步任务
 
 
 
-## 
+
 
 
 
