@@ -6,7 +6,7 @@
 
 部分文件如图：
 
-
+![](https://github.com/Biusec/Open_the_cyber_security_door/blob/main/images/litte_ppt_image.png)
 
 ### 大安全行业
 
