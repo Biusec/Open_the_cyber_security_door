@@ -62,7 +62,7 @@ Open_the_cyber_security_door
 
 + https://github.com/MiYogurt/network-security-mind-map
 + https://github.com/findneo/Newbie-Security-List
-+ 
++ https://github.com/FeeiCN/Security-PPT
 
 包括但不限于以上的链接，因为查找了很多资料，感谢互联网让知识的获取变的便捷，以及希望后来者能够站在前人的肩膀上探索世界
 
